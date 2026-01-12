@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genshin Impact Gallery</title>
+<style>
+    body {
+        background-image: url("file:///C:/Users/ASUS/Desktop/PMFTCI_Website/20251230101548.png");
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 { margin-top: 20px; }
+
+    .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .gallery img {
+        width: 200px;
+        height: 150px;
+        cursor: pointer;
+        transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+    transform: scale(1.25);
+    }
+
+    /* Lightbox overlay */
+    .lightbox {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100vw; height: 100vh;
+        background: rgba(0,0,0,0.8);
+        display: flex; justify-content: center; align-items: center;
+        opacity: 0; pointer-events: none;
+        transition: opacity 0.3s;
+        z-index: 100;
+    }
+    .lightbox.active { opacity: 1; pointer-events: auto; }
+    .lightbox img { max-width: 80%; max-height: 80%; box-shadow: 0 0 20px #696a69; }
+    .lightbox span {
+        position: absolute; top: 20px; right: 30px;
+        font-size: 40px; color: white; cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<h1>Genshin Impact Gallery</h1>
+
+<div class="gallery">
+    <img src="file:///C:/Users/ASUS/Desktop/PMFTCI_Website/Screenshot%20(13).png" alt="Genshin 1">
+    <img src="file:///C:/Users/ASUS/Pictures/Screenshots/Screenshot%20(106).png" alt="Genshin 2">
+    <img src="file:///C:/Users/ASUS/Pictures/Screenshots/Screenshot%20(107).png" alt="Genshin 3">
+    <img src="file:///C:/Users/ASUS/Pictures/Screenshots/Screenshot%20(101).png" alt="Genshin 4">
+    <img src="file:///C:/Users/ASUS/Pictures/Screenshots/Screenshot%20(94).png" alt="Genshin 5">
+    <img src="file:///C:/Users/ASUS/Pictures/Screenshots/Screenshot%20(140).png" alt="Genshin 6">
+    <img src="file:///C:/Users/ASUS/Pictures/Screenshots/Screenshot%20(142).png" alt="Genshin 7">
+    <img src="C:\Users\ASUS\Pictures\Screenshots\Screenshot (102).png" alt="Genshin 8">
+    <img src="C:\Users\ASUS\Pictures\Screenshots\Screenshot (40).png" alt="Genshin 9">
+    <img src="C:\Users\ASUS\Pictures\Screenshots\Screenshot (41).png" alt="Genshin 10">
+    <img src="C:\Users\ASUS\Pictures\Screenshots\Screenshot (28).png" alt="Genshin 11">
+    <img src="C:\Users\ASUS\Pictures\Screenshots\Screenshot (26).png" alt="Genshin 12">
+    <img src="C:\Users\ASUS\Pictures\Screenshots\Screenshot (38).png" alt="Genshin 13">
+    <img src="C:\Users\ASUS\Pictures\Screenshots\Screenshot (24).png" alt="Genshin 14">
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+    <span id="closeBtn">&times;</span>
+    <img src="" alt="Zoomed Image" id="lightbox-img">
+</div>
+
+<script>
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const closeBtn = document.getElementById('closeBtn');
+
+document.querySelectorAll('.gallery img').forEach(img => {
+    img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightbox.classList.add('active');
+    });
+});
+
+closeBtn.addEventListener('click', () => lightbox.classList.remove('active'));
+lightbox.addEventListener('click', e => { if(e.target === lightbox) lightbox.classList.remove('active'); });
+</script>
+
+</body>
+</html>
+
